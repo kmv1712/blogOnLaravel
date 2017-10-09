@@ -5,3 +5,8 @@ composer install
 в командной строке в папке проекта выполнить:
 php artisan migrate
 php artisan db:seed
+
+
+Для входа в админку пройти по ссылке "У вас есть вопрос задайте его мне?"
+в поле имя ввести admin 
+в поле e-mail ввести admin
