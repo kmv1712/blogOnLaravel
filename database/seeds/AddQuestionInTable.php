@@ -18,6 +18,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Выключатели', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
        DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -25,6 +26,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Выключатели', 
       	'userQuestion' => 'Каким напряжением испытываеться масляный выключатель 10кВ в эксплуатации?',
         'adminAnswer' => 'Переменным напряжением 37,8кВ частоты 50 Гц',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
         DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -32,6 +34,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Трансформаторы', 
       	'userQuestion' => 'Зачем нужен ПБВ трансфрматору 10кВ?',
         'adminAnswer' => 'Для изменения наряжения на выходе трансформатора, путем изменения количества витков',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       	 DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -39,6 +42,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Трансформаторы', 
       	'userQuestion' => 'В чем разница ТМГ и ТМ ?',
         'adminAnswer' => 'У ТМГ нет расширителя',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -46,6 +50,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Разъединители', 
       	'userQuestion' => 'Для чего нужен раз?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -53,6 +58,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Разъединители', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -60,6 +66,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'ОПН', 
       	'userQuestion' => 'Для чего нужен ОПН?',
         'adminAnswer' => 'Для ограничения перенапряжений',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -67,6 +74,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'ОПН', 
       	'userQuestion' => 'Как ОПН ограничевает напряжение?',
         'adminAnswer' => 'За счет ВАХ варистора ОПН, ОПН при достижение определенного напряжение открываеться на землю и не дает вырасти напряжению выше номинального',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -74,6 +82,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'РВС', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -81,6 +90,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'РВС', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -88,6 +98,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Молниеотводы', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -95,6 +106,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Молниеотводы', 
       	'userQuestion' => 'Какие типы высоковольтных выключателей сущестуют?',
         'adminAnswer' => 'Элегазовые, Воздушные, Масляные, Электромагнитные, Ваккумные',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -102,6 +114,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Кабель', 
       	'userQuestion' => 'Каким напряжением испытывают кабель 10кВ из сшитого полиэтилена?',
         'adminAnswer' => '18кВ напряжением СНЧ 0,1 Гц, в течение часа',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -109,6 +122,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'Кабель', 
       	'userQuestion' => 'Каким напряжение испытываеться бумажно-масляный кабель 10кВ?',
         'adminAnswer' => '60кВ постоянного напряжения',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -116,6 +130,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'СИЗ', 
       	'userQuestion' => 'Длина диэлектрических перчаток?',
         'adminAnswer' => '35 см',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
       DB::table('questions')->insert(['userName' => 'Михаил', 
@@ -123,6 +138,7 @@ class AddQuestionInTable extends Seeder
       	'categorie' => 'СИЗ', 
       	'userQuestion' => 'Каким напряжением испытываются диэлектрические боты?',
         'adminAnswer' => '15 кВ переменным напряжением частоты 50 Гц',
+        'status' => 1,
         'dateCreateQuestion' => "$dateCreateQuestion"
       	]);
     	// DB::table('questions')->insert(['questions' => 'Трансформаторы']);

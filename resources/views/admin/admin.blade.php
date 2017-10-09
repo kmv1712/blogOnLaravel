@@ -81,32 +81,26 @@
 				</thead>
 
 				<tbody>
-				  @php $i=0; @endphp;
-					@foreach ($categories as $categorie)
-					<tr >
-						<td class="center-align"><a href="">{{$categorie->categorie}}</a></td>
-						@foreach ($questions as $question)
-						<td class="center-align">
-						@if($categorie->categorie == $question->categorie)
-						@php $i++;  @endphp
-						@endif
-						@php echo"$i"; @endphp
-						</td>
-						<td class="center-align"></td>
-						<td class="center-align"></td>
-						@endforeach
-					</tr>
-					@endforeach
-
-					
+					@php
+					foreach ($categories as $categorie){
+					$count = DB::table('questions') -> where('categorie', $categorie->categorie)->count();
+					$countPublishedQuestion = DB::table('questions') -> where('categorie', $categorie->categorie)->where('status', 1)->count();
+					$countNotPublishedQuestion = DB::table('questions') -> where('categorie', $categorie->categorie)->where('status', 0)->count();
+					echo "<tr>";	
+						echo "<td class=center-align><a href= $categorie->categorie >$categorie->categorie</a></td>";	
+						echo "<td class=center-align>$count</td>";	
+						echo "<td class=center-align>$countPublishedQuestion</td>";	
+						echo "<td class=center-align>$countNotPublishedQuestion</td>";	
+					echo "</tr>";}
+					@endphp
 				</tbody>
 			</table>
 
 			<div class="col s12">
-				<div class="row red ligten-1">
-					<form action="" method="POST">
+				<div class="row  ligten-1">
+					<form action="" method="get">
 						<div class="col s6">
-							<input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
+						 <input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
 						</div> 	
 						<div class="col s6">
 							<input class = "waves-effect waves-light btn col s12" type="submit" value = "Удалить тему и вопросы в ней" > 
@@ -151,37 +145,8 @@
 		</div>
 		<!-- Дата, вопрос, статус определенной темы (конец)-->
 
-		<!-- Форма вывода вопрос ответ (начало) -->
-		<p>Автор вопроса:</p>
-		<p>Вопрос: Где искать любовь</p>
-		<p>Ответ: Там где ее нет</p> 
-		<p>Изменить автора</p>
-		<p>Изменить текст вопроса</p>
-		<p>Изменить текст ответа</p>
-		<p>Изменить тему вопросаа</p>
 
-		<!-- Форма вывода вопрос ответ (конец) -->	
 
-		<!-- Список вопросов без ответов -->
-		<table>
-			<thead>
-				<td>Дата вопроса</td>
-				<td>Вопрос</td>
-				<td>Категория</td>
-				<td>Редактировать</td>
-				<td>Удалить</td>
-			</thead>
-			<tbody>
-				<tr>
-					<td>21.09.2017</td>
-					<td>В чем свысл жизни</td>
-					<td>Жизнь</td>
-					<td>Редактировать</td>
-					<td>Удалить</td>
-				</tr>
-			</tbody>
-		</table>
-		<!-- Список вопросов без ответов (конец) -->
 	</div>
 
 </div>

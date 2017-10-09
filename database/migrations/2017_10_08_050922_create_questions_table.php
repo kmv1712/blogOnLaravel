@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->string('categorie');
             $table->string('userQuestion');
             $table->string('adminAnswer');
+            $table->integer('status');
             $table->dateTime('dateCreateQuestion');
     });
     }

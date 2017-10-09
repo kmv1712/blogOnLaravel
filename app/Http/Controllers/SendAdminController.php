@@ -30,26 +30,43 @@ class SendAdminController extends Controller
 
 		elseif (!empty($_GET['action'])){
 			if(($_GET['action'] == 'delAdmin') and !empty($_GET['id'])) {
-			$id = $_GET['id'];
-		  $delAdmin = Admin::where('id', $id)->first(); // File::find($id)
-		  $delAdmin->delete();
-		  }
+				$id = $_GET['id'];
+				$delAdmin = Admin::where('id', $id)->delete();
+
+			}
 			elseif(($_GET['action'] == 'editAdmin') and !empty($_GET['id'])) {
-			$id = $_GET['id'];
-			session_start();
-			$_SESSION['id'] = $_GET['id'];
-			$admins = Admin::find($id);
-		 	return view('admin.editAdmin')->with ('admins', $admins);
+				$id = $_GET['id'];
+				session_start();
+				$_SESSION['id'] = $_GET['id'];
+				$admins = Admin::find($id);
+				return view('admin.editAdmin')->with ('admins', $admins);
 		  // $delAdmin = Admin::where('id', $id)->first(); // File::find($id)
 		  // $delAdmin->delete();
+			}
 		}
-	}
 
-	
-    $questions = Question::all();
-    $categories = Categorie::all();
+
+		$questions = Question::all();
+		$categories = Categorie::all();
+
+
+		foreach ($categories as $categorie) {			
+			$count = Question::where('categorie', $categorie->categorie)->count();
+			$countPublishedQuestion = Question::where('categorie', $categorie->categorie)->where('status', 1)->count();
+			$countNotPublishedQuestion = Question::where('categorie', $categorie->categorie)->where('status', 0)->count();
+		}
+
+
+
+
 		$admins = Admin::all();
-		return view('admin.admin') -> with('admins', $admins)-> with ('categories', $categories)-> with ('questions', $questions ); 
+		return view('admin.admin') -> with('admins', $admins)
+		                           -> with ('categories', $categories)
+		                           -> with ('questions', $questions )
+		                           -> with ('count', $count ) 
+		                           -> with ('countPublishedQuestion', $countPublishedQuestion )
+		                           -> with ('countNotPublishedQuestion', $countNotPublishedQuestion ); 
+
 
 	}
 }
