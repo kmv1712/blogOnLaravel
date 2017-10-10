@@ -87,67 +87,77 @@
 					$countPublishedQuestion = DB::table('questions') -> where('categorie', $categorie->categorie)->where('status', 1)->count();
 					$countNotPublishedQuestion = DB::table('questions') -> where('categorie', $categorie->categorie)->where('status', 0)->count();
 					echo "<tr>";	
-						echo "<td class=center-align><a href= $categorie->categorie >$categorie->categorie</a></td>";	
-						echo "<td class=center-align>$count</td>";	
-						echo "<td class=center-align>$countPublishedQuestion</td>";	
-						echo "<td class=center-align>$countNotPublishedQuestion</td>";	
+					echo "<td class=center-align><a href= getListQuestion?categorie=$categorie->categorie >$categorie->categorie</a></td>";	
+					echo "<td class=center-align>$count</td>";	
+					echo "<td class=center-align>$countPublishedQuestion</td>";	
+					echo "<td class=center-align>$countNotPublishedQuestion</td>";	
+					echo "<td class=center-align><a href=sendAdmin?action=delCateg&id=$categorie->id&categorie=$categorie->categorie > Удалить тему</a></td>";
 					echo "</tr>";}
 					@endphp
-				</tbody>
-			</table>
+					@php 
+					if (isset ($_GET['action'])){
+					if ($_GET['action'] == 'delCateg' and !empty($_GET['id']) and !empty($_GET['categorie']) ){
+					$id = $_GET['id'];
+					$categorie = $_GET['categorie'];
+					$delCategorie = DB::table('categories') -> where('id', "$id")->delete();
+					$delQuestion = DB::table('questions') -> where('categorie', "$categorie")->delete();
+				   }
+			    }
+@endphp
 
-			<div class="col s12">
-				<div class="row  ligten-1">
-					<form action="" method="get">
-						<div class="col s6">
-						 <input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
-						</div> 	
-						<div class="col s6">
-							<input class = "waves-effect waves-light btn col s12" type="submit" value = "Удалить тему и вопросы в ней" > 
-						</div> 	
-					</form>
+		</tbody>
+	</table>
+
+	<div class="col s12">
+		<div class="row  ligten-1">
+			<form action="" method="get">
+				<div class="col s12">
+					<input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
 				</div> 	
-			</div>
-		</div>
-		<!-- Статистика по категориям (конец)-->
-
-		<!-- Дата, вопрос, статус определенной темы (начало)-->
-		<div class="row">
-			<h5>Тема</h5>
-			<table>
-				<thead>
-					<td>Дата создания</td>
-					<td>Вопрос</td>
-					<td>Статус</td>
-					<td>Скрыть</td>
-					<td>Опубликовать</td>
-					<td>Удалить</td>
-				</thead>
-				<tbody>
-					<tr>
-						<td>12.09.2017</td>
-						<td>Что нового присходит в стране грез</td>
-						<td>ожидает ответа</td>
-						<td>Скрыть</td>
-						<td>Опубликовать</td>
-						<td>Удалить</td>
-					</tr>
-					<tr>
-						<td>12.09.2017</td>
-						<td>Где искать любовь</td>
-						<td>ожидает ответа</td>
-						<td>Скрыть</td>
-						<td>Опубликовать</td>
-						<td>Удалить</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<!-- Дата, вопрос, статус определенной темы (конец)-->
-
-
-
+			</form>
+		</div> 	
 	</div>
+</div>
+<!-- Статистика по категориям (конец)-->
+
+<!-- Дата, вопрос, статус определенной темы (начало)-->
+<div class="row">
+	<h5>Тема</h5>
+	<table>
+		<thead>
+			<td>Дата создания</td>
+			<td>Вопрос</td>
+			<td>Статус</td>
+			<td>Скрыть</td>
+			<td>Опубликовать</td>
+			<td>Удалить</td>
+		</thead>
+		<tbody>
+			@foreach ($questions as $question)
+			<tr>
+				<td>{{ $question->dateCreateQuestion }}</td>
+				<td>{{ $question->userQuestion }}</td>
+				<td>@if ($question->status == 1 )
+					Опубликован
+					@elseif ($question->status == 2 )
+					Скрыт
+					@elseif ($question->status == 0 )
+					Не опубликован
+					@endif
+				</td>
+				<td><a href="">Скрыть</a></td>
+				<td><a href="">Опубликовать</a></td>
+				<td><a href="">Удалить</a></td>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+</div>
+<!-- Дата, вопрос, статус определенной темы (конец)-->
+
+
+
+</div>
 
 </div>
 
