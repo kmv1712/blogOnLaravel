@@ -12,7 +12,16 @@ class SendController extends Controller
 {
 
 	public function index(Request $request){
-     
+
+		
+		if ($_GET['action'] == 'delCateg' and !empty($_GET['id']) and !empty($_GET['categorie']) ){
+			$id = $_GET['id'];
+			$categorie = $_GET['categorie'];
+			$delCategorie = Categorie::where('id', "$id")->delete();
+			$delQuestion = Question::where('categorie', "$categorie")->delete();
+		}
+
+
 		// проверка и добавление вопроса в таблицу question//
 		if (!empty($_GET['userName']) and !empty($_GET['userMail']) and !empty($_GET['categorie']) and !empty($_GET['userQuestion']))
 		{
@@ -51,7 +60,7 @@ class SendController extends Controller
 			}
 			else {
 				echo "<h1>Вы ввели не правильно пароль или логин!!!</h1>";
-			  return redirect('/addUserQuestion');
+				return redirect('/addUserQuestion');
 			}
 			
 		}
@@ -62,6 +71,12 @@ class SendController extends Controller
 			return redirect('/addUserQuestion');
 
 		}
+
+
+
+
+
+
 		
 	}
 }
