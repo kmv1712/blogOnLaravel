@@ -30,11 +30,12 @@ class SendController extends Controller
 			$categorie = $_GET['categorie'];
 			$userQuestion = $_GET['userQuestion'];
 			$dateCreateQuestion = date("Y-m-d H:i:s");
-
+      $status = 0;
 			$questions = Question::insert([
 				'userName' => "$userName", 
 				'userMail' => "$userMail",
-				'categorie' => "$categorie", 
+				'categorie' => "$categorie",
+				'status' => "$status",  
 				'userQuestion' => "$userQuestion",
 				'adminAnswer' => '',
 				'dateCreateQuestion' => "$dateCreateQuestion"
