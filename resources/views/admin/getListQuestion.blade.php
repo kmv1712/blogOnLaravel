@@ -42,7 +42,7 @@
 					@if ($_GET['categorie'] == $question -> categorie)
 					<tr>
 						<td>{{ $question->dateCreateQuestion }}</td>
-						<td><a href="getQuestion?userQuestion={{$question->userQuestion}}&userName={{$question->userName}}&categorie={{$question->categorie}}&adminAnswer={{$question->adminAnswer}}&dateCreateQuestion={{$question->dateCreateQuestion}}">{{ $question->userQuestion}}</a></td>
+						<td><a href="getQuestion?userQuestion={{$question->userQuestion}}&userName={{$question->userName}}&categorie={{$question->categorie}}&adminAnswer={{$question->adminAnswer}}&dateCreateQuestion={{$question->dateCreateQuestion}}&questionId={{$question->id}}">{{ $question->userQuestion}}</a></td>
 						<td>@if ($question->status == 1 )
 							Опубликован
 							@elseif ($question->status == 2 )

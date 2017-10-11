@@ -26,4 +26,5 @@ Route::get('/getQuestion', 'AdminController@getQuestion');
 Route::get('/delQuestion', 'AdminController@delQuestion');
 Route::get('/hideQuestion', 'AdminController@hideQuestion');
 Route::get('/publish', 'AdminController@publish');
+Route::get('/saveEditQuestion', 'AdminController@saveEditQuestion');
 // Route::get('/delCategorie', 'AdminController@delCategorie');
