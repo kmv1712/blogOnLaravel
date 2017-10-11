@@ -28,7 +28,7 @@
 
 
 		<div class="row">
-			<form class="col s12 " method="GET" action="saveEditQuestion">
+			<form class="col s12 " method="GET" action="sendAdmin">
 								<div class="row">
 						<div class="input-field col s6">
 							<i class="material-icons prefix">account_circle</i>
