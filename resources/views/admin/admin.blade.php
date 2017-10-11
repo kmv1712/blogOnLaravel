@@ -48,7 +48,7 @@
 						<td>  {{ $admin->id }}</td>
 						<td class="center-align">  {{ $admin->loginAdmin}}</td>
 						<td class="center-align">  {{ $admin->passwordAdmin }}</td>
-						<td><a href="?id={{ $admin->id }}&action=editAdmin" class="center-align">Изменить пароль</a></td>
+						<td><a class=center-align href="editAdmin?id={{ $admin->id }}"center-align">Изменить пароль</a></td>
 						<td><a href="?id={{ $admin->id }}&action=delAdmin" class="center-align">Удалить</a></td>
 					</tr>
 					@endforeach
@@ -91,7 +91,7 @@
 					echo "<td class=center-align>$count</td>";	
 					echo "<td class=center-align>$countPublishedQuestion</td>";	
 					echo "<td class=center-align>$countNotPublishedQuestion</td>";	
-					echo "<td class=center-align><a href=sendAdmin?action=delCateg&id=$categorie->id&categorie=$categorie->categorie > Удалить тему</a></td>";
+					echo "<td class=center-align><a href=delCateg?action=delCateg&id=$categorie->id&categorie=$categorie->categorie > Удалить тему</a></td>";
 					echo "</tr>";}
 					@endphp
 					@php 
@@ -101,8 +101,9 @@
 					$categorie = $_GET['categorie'];
 					$delCategorie = DB::table('categories') -> where('id', "$id")->delete();
 					$delQuestion = DB::table('questions') -> where('categorie', "$categorie")->delete();
-				   }
+					}
 			    }
+
 @endphp
 
 		</tbody>
@@ -110,7 +111,7 @@
 
 	<div class="col s12">
 		<div class="row  ligten-1">
-			<form action="" method="get">
+			<form action="addCateg" method="get">
 				<div class="col s12">
 					<input class = "waves-effect waves-light btn col s12" type="submit" value = "Добавить тему" > 
 				</div> 	

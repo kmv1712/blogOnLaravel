@@ -19,4 +19,7 @@ Route::get('/sendAdmin', 'SendAdminController@index');
 Route::get('/addAdmin', 'AdminController@add');
 Route::get('/editAdmin', 'AdminController@edit');
 Route::get('/getListQuestion', 'AdminController@getListQuestion');
+Route::get('/addCateg', 'AdminController@addCateg');
+Route::get('/delCateg', 'AdminController@delCateg');
+Route::get('/addAnswer', 'AdminController@addAnswer');
 // Route::get('/delCategorie', 'AdminController@delCategorie');

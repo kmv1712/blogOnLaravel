@@ -28,26 +28,19 @@
 
 
 		<div class="row">
-			<form class="col s12 " method="GET" action="editAdmin">
-
+			<form class="col s12 " method="GET" action="sendAdmin">
 				<div class="row">
-					<div class="input-field col s6">
-						<i class="material-icons prefix">edit</i>
-						<input id="edit" type="tel" class="validate" name="id" value={{$id}} >
-						<label for="edit">ID администратора (не изменять!): </label>
-					</div>
+					<form class="col s12 " method="GET" action="sendAdmin">
+						<div class="row">
+							<div class="input-field col s6">
+							<h1>Администратор добавлен</h1>
+							</div>
+						</div>
 
+						<input class = "waves-effect waves-light btn row col s6" type="submit" value = "Ок">
+
+					</form>
 				</div>
-				<div class="row">
-					<div class="input-field col s6">
-						<i class="material-icons prefix">edit</i>
-
-						<input id="edit" type="tel" class="validate" name="passwordAdmin">
-						<label for="edit">Введите новый пароль для администратора {{$admins->loginAdmin}}: </label>
-					</div>
-				</div>
-
-				<input class = "waves-effect waves-light btn row col s6" type="submit" value = "Изменить пароль">
 
 			</form>
 		</div>

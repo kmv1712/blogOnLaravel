@@ -28,24 +28,14 @@
 
 
 		<div class="row">
-			<form class="col s12 " method="GET" action="addAnswer">
+			<form class="col s12 " method="GET" action="sendAdmin">
 								<div class="row">
 						<div class="input-field col s6">
-							<i class="material-icons prefix">account_circle</i>
-							<input id="icon_prefix" type="text" class="validate" name="loginAdmin">
-							<label for="icon_prefix">Введите имя администратора:</label>
+							<h1>Тема удалена </h1>
 						</div>
 					</div>
-
-					<div class="row">
-						<div class="input-field col s6">
-							<i class="material-icons prefix">edit</i>
-							<input id="edit" type="tel" class="validate" name="passwordAdmin">
-							<label for="edit">Введите пароль администратора:</label>
-						</div>
-					</div>
-	
-						<input class = "waves-effect waves-light btn row col s6" type="submit" value = "Добавить администратора">
+		
+						<input class = "waves-effect waves-light btn row col s6" type="submit" value = "Ок">
 			
 				</form>
 			</div>

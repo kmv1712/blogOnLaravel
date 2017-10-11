@@ -14,34 +14,27 @@ class SendAdminController extends Controller
 	{
 		$categories = Categorie::all();
 		$admins = Admin::all();
-		if (!empty($_GET['loginAdmin']) and !empty($_GET['passwordAdmin']))
-		{
-			$loginAdmin = $_GET['loginAdmin'];
-			$passwordAdmin = $_GET['passwordAdmin'];
-			$dateCreateAdmin= date("Y-m-d H:i:s");
 
-			Admin::insert([
-				'loginAdmin' => "$loginAdmin", 
-				'passwordAdmin' => "$passwordAdmin", 
-				'dateCreateAdmin' => "$dateCreateAdmin"
-				]);
-			redirect('/sendAdmin');
+
+		
+
+		if (!empty($_GET['newCateg']))
+		{
+			$newCateg = $_GET['newCateg'];
+			$dateCreateCategorie= date("Y-m-d H:i:s");
+			Categorie::insert(['categorie' => "$newCateg",'dateCreateCategorie' => "$dateCreateCategorie"]);
+			    return view('admin.addCateg');
 		}
+
+
+
+
 
 		elseif (!empty($_GET['action'])){
 			if(($_GET['action'] == 'delAdmin') and !empty($_GET['id'])) {
 				$id = $_GET['id'];
 				$delAdmin = Admin::where('id', $id)->delete();
 
-			}
-			elseif(($_GET['action'] == 'editAdmin') and !empty($_GET['id'])) {
-				$id = $_GET['id'];
-				session_start();
-				$_SESSION['id'] = $_GET['id'];
-				$admins = Admin::find($id);
-				return view('admin.editAdmin')->with ('admins', $admins);
-		  // $delAdmin = Admin::where('id', $id)->first(); // File::find($id)
-		  // $delAdmin->delete();
 			}
 		}
 
@@ -61,11 +54,11 @@ class SendAdminController extends Controller
 
 		$admins = Admin::all();
 		return view('admin.admin') -> with('admins', $admins)
-		                           -> with ('categories', $categories)
-		                           -> with ('questions', $questions )
-		                           -> with ('count', $count ) 
-		                           -> with ('countPublishedQuestion', $countPublishedQuestion )
-		                           -> with ('countNotPublishedQuestion', $countNotPublishedQuestion ); 
+		-> with ('categories', $categories)
+		-> with ('questions', $questions )
+		-> with ('count', $count ) 
+		-> with ('countPublishedQuestion', $countPublishedQuestion )
+		-> with ('countNotPublishedQuestion', $countNotPublishedQuestion ); 
 
 
 	}
