@@ -26,67 +26,82 @@ class AdminController extends Controller
 
     public function publish(Request $request)
     {
-        if (isset($_GET['id'])){
+        if (isset($_GET['id']) and isset($_GET['categorie'] )){
             $id = $_GET['id'];
             $categorie = $_GET['categorie'];
             $publishQuestion = Question::where('id', $id) -> update(['status' => 1]);
             return redirect("/getListQuestion?categorie=$categorie");
         }
+        else {
+            $id = $_GET['id'];
+            $publishQuestion = Question::where('id', $id) -> update(['status' => 1]);
+            return redirect("/sendAdmin");
+        }
     }
 
     public function hideQuestion(Request $request)
     {
-        if (isset($_GET['id'])){
+        if (isset($_GET['id']) and isset($_GET['categorie'] )){
             $id = $_GET['id'];
             $categorie = $_GET['categorie'];
             $hideQuestion = Question::where('id', $id) -> update(['status' => 2]);
             return redirect("/getListQuestion?categorie=$categorie");
         }
+        else {
+            $id = $_GET['id'];
+            $hideQuestion = Question::where('id', $id) -> update(['status' => 2]);
+            return redirect("/sendAdmin");
+        }
     }
 
     public function delQuestion(Request $request)
     {
-        if (isset($_GET['id'])){
+        if (isset($_GET['id']) and isset($_GET['categorie'] )){
             $id = $_GET['id'];
             $categorie = $_GET['categorie'];
             $delQuestion = Question::where('id', $id) -> delete();
             return redirect("/getListQuestion?categorie=$categorie");
         }
-    }
-
-
-    public function add(Request $request)
-    {
-        $questions = Question::all();
-        $categories = Categorie::all();
-
-        return view('admin.addAdmin')-> with ('categories', $categories);
-    }
-
-    public function getQuestion(Request $request)
-    {
-    // dd($_GET);
-     $userQuestion = $_GET['userQuestion'];
-     $userName = $_GET['userName'];
-     $adminAnswer = $_GET['adminAnswer'];
-     $categorie = $_GET['categorie'];
-     $dateCreateQuestion = $_GET['dateCreateQuestion'];
-     $questions = Question::all();
-     $questionId  = $_GET['questionId']; 
-
-     return view('admin.questionForm') 
-     -> with ('userName', $userName )
-     -> with ('categorie', $categorie)
-     -> with ('userQuestion', $userQuestion)
-     -> with ('adminAnswer', $adminAnswer)
-     -> with ('dateCreateQuestion', $dateCreateQuestion)
-     -> with ('questions', $questions)
-     -> with ('questionId', $questionId);
+        else {
+         $id = $_GET['id'];
+         $delQuestion = Question::where('id', $id) -> delete();
+         return redirect("/sendAdmin");
+     }
  }
 
 
- public function edit(Request $request)
+ public function add(Request $request)
  {
+    $questions = Question::all();
+    $categories = Categorie::all();
+
+    return view('admin.addAdmin')-> with ('categories', $categories);
+}
+
+public function getQuestion(Request $request)
+{
+    // dd($_GET);
+   $userQuestion = $_GET['userQuestion'];
+   $userName = $_GET['userName'];
+   $adminAnswer = $_GET['adminAnswer'];
+   $categorie = $_GET['categorie'];
+   $dateCreateQuestion = $_GET['dateCreateQuestion'];
+   $questions = Question::all();
+   $questionId  = $_GET['questionId']; 
+
+   return view('admin.questionForm') 
+   -> with ('userName', $userName )
+   -> with ('categorie', $categorie)
+   -> with ('userQuestion', $userQuestion)
+   -> with ('adminAnswer', $adminAnswer)
+   -> with ('dateCreateQuestion', $dateCreateQuestion)
+   -> with ('questions', $questions)
+   -> with ('questionId', $questionId);
+}
+
+
+public function edit(Request $request)
+{
 
     if(!empty($_GET['passwordAdmin'])) {
         $id = $_GET['id'];
@@ -115,18 +130,18 @@ public function getListQuestion(Request $request)
 public function delCategorie(Request $request)
 {
 
-   $id = $_GET['id'];
-   $delCategorie = Categorie::where('id', $id) -> delete();
-   $questions = Question::all();
-   $categories = Categorie::all();
-   $admins = Admin::all();
+ $id = $_GET['id'];
+ $delCategorie = Categorie::where('id', $id) -> delete();
+ $questions = Question::all();
+ $categories = Categorie::all();
+ $admins = Admin::all();
 
-   return view('admin.admin') -> with('admins', $admins)
-   -> with ('categories', $categories)
-   -> with ('questions', $questions )
-   -> with ('count', $count ) 
-   -> with ('countPublishedQuestion', $countPublishedQuestion )
-   -> with ('countNotPublishedQuestion', $countNotPublishedQuestion ); 
+ return view('admin.admin') -> with('admins', $admins)
+ -> with ('categories', $categories)
+ -> with ('questions', $questions )
+ -> with ('count', $count ) 
+ -> with ('countPublishedQuestion', $countPublishedQuestion )
+ -> with ('countNotPublishedQuestion', $countNotPublishedQuestion ); 
 
 }
 

@@ -120,9 +120,49 @@
 	</div>
 </div>
 <!-- Статистика по категориям (конец)-->
+
+<!-- Дата, вопрос, статус определенной темы (начало)-->
+<div class="row">
+	<h5>Тема</h5>
+	<table>
+		<thead>
+			<td>Дата создания</td>
+			<td>Вопрос</td>
+			<td>Статус</td>
+			<td>Скрыть</td>
+			<td>Опубликовать</td>
+			<td>Удалить</td>
+		</thead>
+		<tbody>
+			@foreach ($questions as $question)
+			@if (empty($question -> adminAnswer))
+			<tr>
+				<td>{{ $question->dateCreateQuestion }}</td>
+				<td><a href="getQuestion?userQuestion={{$question->userQuestion}}&userName={{$question->userName}}&categorie={{$question->categorie}}&adminAnswer={{$question->adminAnswer}}&dateCreateQuestion={{$question->dateCreateQuestion}}&questionId={{$question->id}}">{{ $question->userQuestion}}</a></td>
+				<td>@if ($question->status == 1 )
+					Опубликован
+					@elseif ($question->status == 2 )
+					Скрыт
+					@elseif ($question->status == 0 )
+					Не опубликован
+					@endif
+				</td>
+				<td><a href="hideQuestion?id={{$question->id}}">Скрыть</a></td>
+				<td><a href="publish?id={{$question->id}}">Опубликовать</a></td>
+				<td><a href="delQuestion?id={{$question->id}}">Удалить</a></td>
+			</tr>
+			@endif
+			@endforeach
+		</tbody>
+	</table>
+</div>
+<!-- Дата, вопрос, статус определенной темы (конец)-->
+
+
+
 </div>
 
-
+</div>
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
