@@ -22,4 +22,8 @@ Route::get('/getListQuestion', 'AdminController@getListQuestion');
 Route::get('/addCateg', 'AdminController@addCateg');
 Route::get('/delCateg', 'AdminController@delCateg');
 Route::get('/addAnswer', 'AdminController@addAnswer');
+Route::get('/getQuestion', 'AdminController@getQuestion');
+Route::get('/delQuestion', 'AdminController@delQuestion');
+Route::get('/hideQuestion', 'AdminController@hideQuestion');
+Route::get('/publish', 'AdminController@publish');
 // Route::get('/delCategorie', 'AdminController@delCategorie');

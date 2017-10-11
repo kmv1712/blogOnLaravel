@@ -41,7 +41,7 @@ a > h1:hover
 			<ul id="{{ $categorie->categorie}}" class="cd-faq-group">
 				<li class="cd-faq-title"><h2>{{ $categorie->categorie}}</h2></li>
 				@foreach ($questions as $question)
-				@if ($question->categorie == $categorie->categorie)
+				@if ($question->categorie == $categorie->categorie and $question->status == 1)
 				<li>
 					<a class="cd-faq-trigger" href="#0">{{$question->userQuestion}}</a>
 					<div class="cd-faq-content">

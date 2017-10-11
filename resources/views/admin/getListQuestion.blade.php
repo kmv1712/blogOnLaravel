@@ -26,7 +26,7 @@
 		</div>
 
 		<!-- Статистика по категориям (начало)-->
-	<div class="row">
+		<div class="row">
 			<h5>{{$_GET['categorie']}}</h5>
 			<table>
 				<thead>
@@ -42,7 +42,7 @@
 					@if ($_GET['categorie'] == $question -> categorie)
 					<tr>
 						<td>{{ $question->dateCreateQuestion }}</td>
-						<td>{{ $question->userQuestion }}</td>
+						<td><a href="getQuestion?userQuestion={{$question->userQuestion}}&userName={{$question->userName}}&categorie={{$question->categorie}}&adminAnswer={{$question->adminAnswer}}&dateCreateQuestion={{$question->dateCreateQuestion}}">{{ $question->userQuestion}}</a></td>
 						<td>@if ($question->status == 1 )
 							Опубликован
 							@elseif ($question->status == 2 )
@@ -51,24 +51,27 @@
 							Не опубликован
 							@endif
 						</td>
-						<td><a href="">Скрыть</a></td>
-						<td><a href="">Опубликовать</a></td>
-						<td><a href="">Удалить</a></td>
+						<td><a href="hideQuestion?id={{$question->id}}&categorie={{$question->categorie}}">Скрыть</a></td>
+						<td><a href="publish?id={{$question->id}}&categorie={{$question->categorie}}">Опубликовать</a></td>
+						<td><a href="delQuestion?id={{$question->id}}&categorie={{$question->categorie}}">Удалить</a></td>
 					</tr>
+
 					@endif
 					@endforeach
 				</tbody>
 			</table>
 		</div>
 		<!-- Статистика по категориям (конец)-->
+		<form action="sendAdmin">
+			<input type="submit" value="Перейти на главную страницу администратора" class = "waves-effect waves-light btn row col s12">
+		</form>
 
-	
 
 	</div>
 
 
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

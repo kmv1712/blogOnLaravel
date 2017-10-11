@@ -26,7 +26,7 @@
 		</div>
 
 		<!-- Список администраторов (начало)-->
-		<h5>Здраствуйте </h5>
+		<h5>Здравствуйте </h5>
 
 		<div class="row"><div class= "col s12 "><h5>Список администраторов</h5></div></div>
 
@@ -120,47 +120,9 @@
 	</div>
 </div>
 <!-- Статистика по категориям (конец)-->
-
-<!-- Дата, вопрос, статус определенной темы (начало)-->
-<div class="row">
-	<h5>Тема</h5>
-	<table>
-		<thead>
-			<td>Дата создания</td>
-			<td>Вопрос</td>
-			<td>Статус</td>
-			<td>Скрыть</td>
-			<td>Опубликовать</td>
-			<td>Удалить</td>
-		</thead>
-		<tbody>
-			@foreach ($questions as $question)
-			<tr>
-				<td>{{ $question->dateCreateQuestion }}</td>
-				<td>{{ $question->userQuestion }}</td>
-				<td>@if ($question->status == 1 )
-					Опубликован
-					@elseif ($question->status == 2 )
-					Скрыт
-					@elseif ($question->status == 0 )
-					Не опубликован
-					@endif
-				</td>
-				<td><a href="">Скрыть</a></td>
-				<td><a href="">Опубликовать</a></td>
-				<td><a href="">Удалить</a></td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-</div>
-<!-- Дата, вопрос, статус определенной темы (конец)-->
-
-
-
 </div>
 
-</div>
+
 
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

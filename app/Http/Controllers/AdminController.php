@@ -9,6 +9,37 @@ use App\Question;
 
 class AdminController extends Controller
 {
+
+public function publish(Request $request)
+{
+    if (isset($_GET['id'])){
+    $id = $_GET['id'];
+    $categorie = $_GET['categorie'];
+    $publishQuestion = Question::where('id', $id) -> update(['status' => 1]);
+    return redirect("/getListQuestion?categorie=$categorie");
+   }
+}
+public function hideQuestion(Request $request)
+{
+    if (isset($_GET['id'])){
+    $id = $_GET['id'];
+    $categorie = $_GET['categorie'];
+    $hideQuestion = Question::where('id', $id) -> update(['status' => 2]);
+    return redirect("/getListQuestion?categorie=$categorie");
+   }
+}
+
+public function delQuestion(Request $request)
+{
+    if (isset($_GET['id'])){
+    $id = $_GET['id'];
+    $categorie = $_GET['categorie'];
+    $delQuestion = Question::where('id', $id) -> delete();
+    return redirect("/getListQuestion?categorie=$categorie");
+   }
+}
+
+
  public function add(Request $request)
  {
     $questions = Question::all();
@@ -16,6 +47,26 @@ class AdminController extends Controller
 
     return view('admin.addAdmin')-> with ('categories', $categories);
 }
+
+public function getQuestion(Request $request)
+{
+    // dd($_GET);
+ $userQuestion = $_GET['userQuestion'];
+ $userName = $_GET['userName'];
+ $adminAnswer = $_GET['adminAnswer'];
+ $categorie = $_GET['categorie'];
+ $dateCreateQuestion = $_GET['dateCreateQuestion'];
+ $questions = Question::all();
+
+ return view('admin.questionForm') 
+ -> with ('userName', $userName )
+ -> with ('categorie', $categorie)
+ -> with ('userQuestion', $userQuestion)
+ -> with ('adminAnswer', $adminAnswer)
+ -> with ('dateCreateQuestion', $dateCreateQuestion)
+ -> with ('questions', $questions);
+}
+
 
 public function edit(Request $request)
 {
@@ -46,6 +97,7 @@ public function getListQuestion(Request $request)
 
 public function delCategorie(Request $request)
 {
+   ;
     $id = $_GET['id'];
     $delCategorie = Categorie::where('id', $id) -> delete();
     $questions = Question::all();
